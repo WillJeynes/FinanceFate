@@ -1,0 +1,38 @@
+﻿
+<div class="jumbotron text-center">
+    <h1 class="text-info">Game over</h1>
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+        <h2 class="text-center">Your got @ViewBag.Score correct during the higher or lower game</h2>
+        <br><br>
+    </div>
+
+    <div class="form-group">
+        @using (Html.BeginForm("Index", "Leaderboard/Register", FormMethod.Get, new { }))
+        {
+            <label for="user" class="center-block" style="display: block; text-align: center;">Username:</label>
+            <input type="text" class="form-control center-block text-center" id="user" name="user">
+            <input type="hidden" value="@ViewBag.Score" name="score">
+            <br>
+            <input type="submit" class="form-control center-block text-center" value="SUBMIT!">
+        }
+    </div>
+</div>
+
+<br><br><br><br>
+
+<div class="row">
+    <div class="col-md-4">
+        <p class="text-info text-left"><a class="btn btn-success btn-lg " href="/Leaderboard" data-toggle="tooltip" title="Leaderboard">Go to leaderboard</a></p>
+    </div>
+
+    <div class="col-md-4">
+        <p class="text-info text-center"><a class="btn btn-success btn-lg " href="/Home" data-toggle="tooltip" title="Home page">Return to home page</a></p>
+    </div>
+
+    <div class="col-md-4 text-right">
+        <p class="text-info"><a class="btn btn-success btn-lg" href="/Game" data-toggle="tooltip" title="Game">Return to game menu</a></p>
+    </div>
+</div>

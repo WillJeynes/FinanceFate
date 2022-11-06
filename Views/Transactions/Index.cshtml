@@ -1,0 +1,32 @@
+﻿@{
+    Layout = null;
+}
+@Styles.Render("~/Content/css")
+@Scripts.Render("~/bundles/modernizr")
+<style>
+    body {
+        margin: 0px;
+        padding: 0px;
+    }
+</style>
+
+<div style="width:100%; min-height:100%; background-color:white">
+    @if (ViewBag.Transactions.Count != 0)
+    {
+        <ul>
+            <li>Transaction Details</li>
+            @foreach (FinanceFate.Areas.Transactions.Transaction p in ViewBag.Transactions)
+            {
+                <li>Amount: @p.ammount</li>
+                <li>Merchant: @p.merchantName</li>
+                <li>Category: @p.category</li>
+                <li>Description: @p.description</li>
+                <li>Message: @p.message</li>
+            }
+        </ul>
+    }
+    else
+    {
+        <p>No Recent transactions</p>
+    }
+</div>

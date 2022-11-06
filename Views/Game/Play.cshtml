@@ -1,0 +1,97 @@
+﻿<script>
+    function ShowGiven() {
+        $(".given_element").show(function () {
+            // Find the iframes within our newly-visible element
+            $(this).find("iframe").prop("src", function () {
+                // Set their src attribute to the value of data-src
+                return $(this).data("src");
+            });
+        });
+        $(".givenbutton").hide();
+    }
+
+    function ShowFind() {
+        $(".find_element").show(function () {
+            // Find the iframes within our newly-visible element
+            $(this).find("iframe").prop("src", function () {
+                // Set their src attribute to the value of data-src
+                return $(this).data("src");
+            });
+        });
+        $(".findbutton").hide();
+
+    }
+</script>
+
+<div class="jumbotron">
+    <h1 class="text-center text-capitalize">Higher or lower?</h1>
+    <h2 class="text-center">@ViewBag.Score</h2>
+</div>
+
+<div class="row">
+    <div class="col-md-6" style="background-color:none;  padding: 10px;">
+        <h2 class="text-center"><u>@ViewBag.person1.FName @ViewBag.person1.LName</u></h2>
+        <h2 class="text-center">@ViewBag.person1.Location</h2>
+        <h3 class="text-center">Balance: @ViewBag.person1.Balance</h3>
+        <h3 class="text-center">Credit Score: @ViewBag.person1.CreditScore</h3>
+        <h3 class="text-center">Risk Score: @ViewBag.person1.RiskScore</h3>
+        <h3 class="text-center">Credit Limit: @ViewBag.person1.CreditLimit</h3>
+        <h3 class="text-center">Product Type: @ViewBag.person1.ProductType</h3>
+        <button class="givenbutton center-block btn btn-default " onclick="ShowGiven()">
+            Show hint
+        </button>
+        <div style="display: none;" class="given_element">
+            <iframe class="center-block" style="background-image: url('https://upload.wikimedia.org/wikipedia/commons/b/b1/Loading_icon.gif?20151024034921'); background-size: cover; background-position-y: center " data-src="/Transactions?acct=@ViewBag.person1.AccountID"></iframe>
+        </div>
+    </div>
+    <div class="col-md-6 b" style="background-color:none; padding: 10px; transition: ease 1s background-color">
+        <h2 class="text-center"><u>@ViewBag.person2.FName @ViewBag.person2.LName</u></h2>
+        <h2 class="text-center">@ViewBag.person2.Location</h2>
+        <h3 class="text-center">Balance: @ViewBag.person2.Balance</h3>
+        <h3 class="text-center">Credit Score: @ViewBag.person2.CreditScore</h3>
+        <h3 class="text-center">Risk Score: @ViewBag.person2.RiskScore</h3>
+        <h3 class="text-center">Credit Limit: @ViewBag.person2.CreditLimit</h3>
+        <h3 class="text-center">Product Type: @ViewBag.person2.ProductType</h3>
+        <button class="findbutton center-block btn btn-default " onclick="ShowFind()">
+            Show hint
+        </button>
+        <div style="display: none; " class="find_element">
+            <iframe class="center-block" style=" background-image: url('https://upload.wikimedia.org/wikipedia/commons/b/b1/Loading_icon.gif?20151024034921'); background-size: cover; background-position-y:center" data-src="/Transactions?acct=@ViewBag.person2.AccountID"></iframe>
+        </div>
+    </div>
+</div>
+
+<h2 class="text-center text-capitalize">Does @ViewBag.person2.FName have a</h2>
+
+<div class="row">
+    <div class="col-md-5">
+        <p><a class="btn btn-success btn-lg center-block c" href="/Game/submithigh" >Higher</a></p>
+    </div>
+    <div class="col-md-2">
+        <h2 class="text-center center-block">Or</h2>
+    </div>
+    <div class="col-md-5">
+        <p><a class="btn btn-danger btn-lg center-block a" href="/Game/submitlow">Lower</a></p>
+    </div>
+</div>
+
+<h2 class="text-center text-capitalize">@ViewBag.Thing than @ViewBag.person1.FName?</h2>
+
+<script>
+    $(function () {
+        $('.a').hover(function () {
+            $('.b').css('background-color', 'red');
+        }, function () {
+            // on mouseout, reset the background colour
+            $('.b').css('background-color', '');
+        });
+    });
+    $(function () {
+        $('.c').hover(function () {
+            $('.b').css('background-color', 'green');
+        }, function () {
+            // on mouseout, reset the background colour
+            $('.b').css('background-color', '');
+        });
+    });
+</script>
